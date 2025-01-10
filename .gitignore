@@ -1,0 +1,4 @@
+venv
+gui-streamlit/data
+.DS_Store
+.env
