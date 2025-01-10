@@ -1,0 +1,160 @@
+Iteration 1:
+LLM Response Time: 30.4307 sec, Code Execution Time: 0.1813 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 2:
+LLM Response Time: 28.3238 sec, Code Execution failed
+Error: name 'array' is not defined
+
+Iteration 3:
+LLM Response Time: 20.1618 sec, Code Execution Time: 0.1689 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 4:
+LLM Response Time: 39.5358 sec, Code Execution Time: 0.1754 sec
+file_format: .jpg dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 5:
+LLM Response Time: 583.4332 sec, Code Execution Time: 0.3468 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 6:
+LLM Response Time: 32.8656 sec, Code Execution Time: 0.4567 sec
+file_format: 0.0 dimensions: (1281, 1920) aspect_ratio: 1.4988290398126465 
+
+Iteration 7:
+LLM Response Time: 29.8395 sec, Code Execution Time: 0.1649 sec
+file_format: JPEG dimensions: 1920 x 1281 aspect_ratio: 1.5 
+
+Iteration 8:
+LLM Response Time: 143.3811 sec, Code Execution Time: 0.1348 sec
+file_format: jpg dimensions: (1920, 1281) aspect_ratio: 1.5 
+
+Iteration 9:
+LLM Response Time: 678.0413 sec, Code Execution Time: 0.1407 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 10:
+LLM Response Time: 149.4487 sec, Code Execution Time: 0.2607 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 11:
+LLM Response Time: 20.2877 sec, Code Execution Time: 0.1447 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 12:
+LLM Response Time: 33.3501 sec, Code Execution Time: 0.1842 sec
+file_format: JPEG dimensions: 1920x1281 aspect_ratio: 1.4988290398126465 
+
+Iteration 13:
+LLM Response Time: 38.6151 sec, Code Execution failed
+Error: NameError: name 'Image' is not defined
+
+Iteration 14:
+LLM Response Time: 38.9902 sec, Code Execution Time: 0.1386 sec
+file_format: JPEG dimensions: 1920x1281 aspect_ratio: 1.4988290398126465 
+
+Iteration 15:
+LLM Response Time: 957.9771 sec, Code Execution Time: 0.1447 sec
+file_format: jpg dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 16:
+LLM Response Time: 72.8482 sec, Code Execution Time: 1.3210 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 17:
+LLM Response Time: 20.6658 sec, Code Execution Time: 0.1349 sec
+file_format: JPEG dimensions: 1920x1281 aspect_ratio: 1.50 
+
+Iteration 18:
+LLM Response Time: 7.7021 sec, Code Execution Time: 0.0996 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 19:
+LLM Response Time: 37.7154 sec, Code Execution Time: 0.1030 sec
+file_format: jpg dimensions: 1920x1281 aspect_ratio: 1.4988290398126465 
+
+Iteration 20:
+LLM Response Time: 21.9061 sec, Code Execution Time: 0.1125 sec
+file_format: JPEG dimensions: 1920x1281 aspect_ratio: 1.5 
+
+Iteration 21:
+LLM Response Time: 29.7479 sec, Code Execution failed
+Error: SyntaxError: invalid syntax
+
+Iteration 22:
+LLM Response Time: 14.0520 sec, Code Execution Time: 0.1487 sec
+file_format: JPEG dimensions: 1920x1281 aspect_ratio: 1.5 
+
+Iteration 23:
+LLM Response Time: 4.5578 sec, Code Execution failed
+Error: NameError: name 'Image' is not defined
+
+Iteration 24:
+LLM Response Time: 8.8216 sec, Code Execution Time: 0.1025 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 25:
+LLM Response Time: 9.6467 sec, Code Execution Time: 0.1132 sec
+file_format: JPEG dimensions: 1920x1281 aspect_ratio: 1.50 
+
+Iteration 26:
+LLM Response Time: 10.3815 sec, Code Execution Time: 0.1127 sec
+file_format: jpg dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 27:
+LLM Response Time: 9.5931 sec, Code Execution Time: 0.0861 sec
+file_format: JPEG dimensions: 1920x1281 aspect_ratio: 1.4988290398126465 
+
+Iteration 28:
+LLM Response Time: 9.2287 sec, Code Execution Time: 0.1014 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 29:
+LLM Response Time: 10.8866 sec, Code Execution Time: 0.1005 sec
+file_format: JPEG dimensions: 1920 x 1281 aspect_ratio: 1.4988290398126465 
+
+Iteration 30:
+LLM Response Time: 21.1688 sec, Code Execution Time: 0.1412 sec
+file_format:  dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 31:
+LLM Response Time: 6.2992 sec, Code Execution Time: 0.1017 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.5 
+
+Iteration 32:
+LLM Response Time: 6.0025 sec, Code Execution Time: 0.1030 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 0.67 
+
+Iteration 33:
+LLM Response Time: 7.1921 sec, Code Execution Time: 0.0903 sec
+file_format: jpg dimensions: (1920, 1281) aspect_ratio: 1.5 
+
+Iteration 34:
+LLM Response Time: 9.3441 sec, Code Execution Time: 0.1128 sec
+file_format: .jpg dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 35:
+LLM Response Time: 7.1359 sec, Code Execution Time: 0.1067 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 36:
+LLM Response Time: 9.4327 sec, Code Execution Time: 0.1140 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 37:
+LLM Response Time: 8.0562 sec, Code Execution Time: 0.1065 sec
+file_format: jpg dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 38:
+LLM Response Time: 9.8295 sec, Code Execution Time: 0.1028 sec
+file_format: .jpg dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 39:
+LLM Response Time: 7.8646 sec, Code Execution Time: 0.1105 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 40:
+LLM Response Time: 12.5342 sec, Code Execution failed
+Error: No dictionary found! 
+

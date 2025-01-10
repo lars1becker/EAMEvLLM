@@ -1,0 +1,160 @@
+Iteration 1:
+LLM Response Time: 2.6210 sec, Code Execution Time: 0.1070 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 2:
+LLM Response Time: 2.8835 sec, Code Execution Time: 0.0976 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 3:
+LLM Response Time: 3.5857 sec, Code Execution Time: 0.0949 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 4:
+LLM Response Time: 2.8738 sec, Code Execution Time: 0.0920 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 5:
+LLM Response Time: 2.9772 sec, Code Execution Time: 0.0988 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 6:
+LLM Response Time: 3.8931 sec, Code Execution Time: 0.0892 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 7:
+LLM Response Time: 2.8351 sec, Code Execution Time: 0.0999 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 8:
+LLM Response Time: 2.0881 sec, Code Execution Time: 0.0951 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 9:
+LLM Response Time: 3.3834 sec, Code Execution Time: 0.0976 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 10:
+LLM Response Time: 2.3124 sec, Code Execution Time: 0.1042 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 11:
+LLM Response Time: 2.8398 sec, Code Execution Time: 0.0971 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 12:
+LLM Response Time: 2.7382 sec, Code Execution Time: 0.0984 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 13:
+LLM Response Time: 2.9713 sec, Code Execution Time: 0.0987 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 14:
+LLM Response Time: 2.2561 sec, Code Execution Time: 0.0977 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 15:
+LLM Response Time: 2.1510 sec, Code Execution Time: 0.0916 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 16:
+LLM Response Time: 3.2881 sec, Code Execution Time: 0.0982 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 17:
+LLM Response Time: 2.2564 sec, Code Execution Time: 0.0983 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 18:
+LLM Response Time: 2.3568 sec, Code Execution Time: 0.0946 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 19:
+LLM Response Time: 2.0548 sec, Code Execution Time: 0.1000 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 20:
+LLM Response Time: 2.1513 sec, Code Execution Time: 0.0985 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 21:
+LLM Response Time: 3.1766 sec, Code Execution Time: 0.0950 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 22:
+LLM Response Time: 2.0520 sec, Code Execution Time: 0.1043 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 23:
+LLM Response Time: 3.1718 sec, Code Execution Time: 0.1027 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 24:
+LLM Response Time: 2.2516 sec, Code Execution Time: 0.1095 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 25:
+LLM Response Time: 2.0049 sec, Code Execution Time: 0.1081 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 26:
+LLM Response Time: 2.4852 sec, Code Execution Time: 0.1096 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 27:
+LLM Response Time: 2.1412 sec, Code Execution Time: 0.1066 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 28:
+LLM Response Time: 3.1652 sec, Code Execution Time: 0.0913 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 29:
+LLM Response Time: 2.3676 sec, Code Execution Time: 0.0981 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 30:
+LLM Response Time: 2.0515 sec, Code Execution Time: 0.0980 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 31:
+LLM Response Time: 2.7681 sec, Code Execution Time: 0.0966 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 32:
+LLM Response Time: 4.3041 sec, Code Execution Time: 0.0982 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 33:
+LLM Response Time: 3.6909 sec, Code Execution Time: 0.0928 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 34:
+LLM Response Time: 1.9937 sec, Code Execution Time: 0.0955 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 35:
+LLM Response Time: 2.3177 sec, Code Execution Time: 0.0973 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 36:
+LLM Response Time: 3.2799 sec, Code Execution Time: 0.0925 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 37:
+LLM Response Time: 3.2869 sec, Code Execution Time: 0.0981 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 38:
+LLM Response Time: 2.0500 sec, Code Execution Time: 0.0991 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 39:
+LLM Response Time: 3.3806 sec, Code Execution Time: 0.1006 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
+Iteration 40:
+LLM Response Time: 3.8623 sec, Code Execution Time: 0.1150 sec
+file_format: JPEG dimensions: (1920, 1281) aspect_ratio: 1.4988290398126465 
+
