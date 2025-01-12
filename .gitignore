@@ -2,3 +2,4 @@ venv
 gui-streamlit/data
 .DS_Store
 .env
+testing_llms/data
