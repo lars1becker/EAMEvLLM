@@ -1,0 +1,13 @@
+You are an expert at programming python code. 
+Write python code that extracts metadata from an RDF-File as specified in the VoID vocabulary, but only the predicate count and the class count
+	1.	The predicate count: A count of all unique predicates in the RDF file.
+	2.	The class count: A count of all unique RDF classes (i.e., objects of rdf:type triples).
+The rdf file is stored at the path ./data/void/books.ttl. Store the result in a dictionary called result and print it at the end, like this (where the values are placeholders): 
+```python
+result = {
+    'predicate_count': 'value',
+    'class_count': 'value'
+}
+print(result)
+```.
+Just output the block of code without any additional text. Make sure the code works and compiles correctly.

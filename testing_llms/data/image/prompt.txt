@@ -1,0 +1,11 @@
+You are an expert at programming python code. 
+Write python code that extracts the file format, the image dimensions and the image aspect ratio of a given image-file. The image-file is stored at the path ./data/image/ocean.jpg. Store the result in a dictionary called result and print it at the end, like this (where the values are placeholders): 
+```python
+result = {
+    'file_format': 'value',
+    'dimensions': 'value',
+    'aspect_ratio': 'value'
+}
+print(result)
+```.
+Just output the block of code without any additional text. Make sure the code works and compiles correctly.

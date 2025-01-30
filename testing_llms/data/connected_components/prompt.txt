@@ -1,0 +1,16 @@
+You are an expert at programming python code. 
+Write python code that calculates the connected components for a given graph-file at the path ./data/connected_components/connected_components.gml. It should calculate the strongly connected components as well as the weakly connected components. Store the result in a dictionary called result and print it at the end, like this (where the values are placeholders and A, B and so on are sample nodes): 
+```python
+result = {
+    'strongly connected components count': 'value',
+    'weakly connected components count': 'value',
+    'strongly connected component 1': 'A, B, C',
+    'strongly connected component 2': 'D, E',
+    ...,
+    'weakly connected component 1': 'A, B, C, F',
+    'weakly connected component 2': 'D, E',
+    ...,
+}
+print(result)
+```.
+Just output the block of code without any additional text. Make sure the code works and compiles correctly.

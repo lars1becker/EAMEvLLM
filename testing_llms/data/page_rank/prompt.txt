@@ -1,0 +1,12 @@
+You are an expert at programming python code. 
+Write python code that calculates the Page Rank scores for a given graph-file at the path ./data/page_rank/page_rank.gml. Store the result for each node in a dictionary called result and print it at the end, like this (where the values are placeholders): 
+```python
+result = {
+    'A': 'value',
+    'B': 'value',
+    ...
+}
+print(result)
+```.
+Take the nodes as their labels and not their id.
+Just output the block of code without any additional text. Make sure the code works and compiles correctly.
