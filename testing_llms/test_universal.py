@@ -232,6 +232,12 @@ def exec_code(model_name, iteration, revision, timeout=10):
 # Initialize a list to hold the data for the CSV
 results_list = []
 
+# Make sure the directories are setup
+os.makedirs(f"data", exist_ok=True)
+for test_case in test_case_names:
+    for folder in ["code", "output"]:
+        os.makedirs(f"data/{test_case}/{folder}", exist_ok=True)
+
 # Clear output files for each model
 for model_name in models:
     with open(f"data/{test_case_name}/output/" + model_name + ".txt", "w") as f:
