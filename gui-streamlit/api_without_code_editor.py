@@ -10,6 +10,7 @@ from functions.create_dockerfile import create_dockerfile
 from functions.create_requirements import create_requirements
 from functions.create_readme import create_readme
 from functions.create_docker_compose import create_docker_compose
+from functions.create_api_app import create_api_app
 
 import requests
 from io import BytesIO 
@@ -120,7 +121,7 @@ with tabs[0]:
                     response, st.session_state.conversation = generate_text_with_huggingface(user_input, selected_model, prompt_setting == "Template", file=st.session_state.uploaded_file, coding_language=coding_language)
                     st.session_state.generated_code = extract_code(response, coding_language)
                     # Save the code to a file
-                    with open(f"data/code.py" if coding_language == "python" else f"data/Code.java", "w") as f:
+                    with open(f"data/Generated_Code.py" if coding_language == "python" else f"data/Generated_Code.java", "w") as f:
                         f.write(st.session_state.generated_code)
                     if st.session_state.generated_code:
                         st.toast("Code generated successfully!")
@@ -142,7 +143,7 @@ with tabs[1]:
                 response, st.session_state.conversation = generate_new_code("", selected_model, conversation=st.session_state.conversation, coding_language=coding_language)
                 st.session_state.generated_code = extract_code(response, coding_language)
                 # Save the code to a file
-                with open(f"data/code.py" if coding_language == "python" else f"data/Code.java", "w") as f:
+                with open(f"data/Generated_Code.py" if coding_language == "python" else f"data/Generated_Code.java", "w") as f:
                     f.write(st.session_state.generated_code)
                 st.rerun()
         with col2:
@@ -153,7 +154,7 @@ with tabs[1]:
                 # Add the code changes to the conversation
                 st.session_state.conversation.append({"role": "user", "content": f"I manually changed the code to this: {code}"})
                 # Save the code to a file
-                with open(f"data/code.py" if coding_language == "python" else f"data/Code.java", "w") as f:
+                with open(f"data/Generated_Code.py" if coding_language == "python" else f"data/Generated_Code.java", "w") as f:
                     f.write(st.session_state.generated_code)
                 st.rerun()
 
@@ -163,7 +164,7 @@ with tabs[1]:
                 response, st.session_state.conversation = generate_new_code(user_prompt, selected_model, conversation=st.session_state.conversation, coding_language=coding_language)
                 st.session_state.generated_code = extract_code(response, coding_language)
                 # Save the code to a file
-                with open(f"data/code.py" if coding_language == "python" else f"data/Code.java", "w") as f:
+                with open(f"data/Generated_Code.py" if coding_language == "python" else f"data/Generated_Code.java", "w") as f:
                     f.write(st.session_state.generated_code)
                 st.rerun()
             else:
@@ -193,6 +194,7 @@ with tabs[1]:
             dockerfile_link = create_dockerfile(coding_language)
             readme_link = create_readme()
             docker_compose_link = create_docker_compose()
-            create_zip(["data/code.py" if coding_language == "python" else "data/Code.java", dockerfile_link, requirements_link, readme_link, docker_compose_link], ["data/uploads/" + st.session_state.uploaded_file.name])
+            api_app_link = create_api_app(coding_language)
+            create_zip(["data/Generated_Code.py" if coding_language == "python" else "data/Generated_Code.java", dockerfile_link, requirements_link, readme_link, docker_compose_link, api_app_link], ["data/uploads/" + st.session_state.uploaded_file.name])
     else:
         st.info("No code available to refine. Please generate code first.", icon="ℹ️")

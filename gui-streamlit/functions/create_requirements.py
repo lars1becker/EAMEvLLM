@@ -19,6 +19,8 @@ def create_requirements(coding_language, code):
         extracted_requirements = []
 
     with open("data/temp_zip/requirements.txt", "w") as requirements:
+        # Add Flask for API deployment
+        requirements.write("Flask\n")
         for requirement in extracted_requirements:
             requirements.write(requirement + "\n")
             

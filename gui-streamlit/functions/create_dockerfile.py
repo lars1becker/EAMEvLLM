@@ -3,23 +3,23 @@ def create_dockerfile(coding_language):
     dockerfile_content_dict = {
         "python" : 
         """
-# Use an official Python runtime as a base image
+# Use an official Python runtime as the base image
 FROM python:3.9-slim
 
-# Set the working directory in the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY requirements.txt .
+# Copy the current directory content into the container at /app
+COPY . /app
 
-# Install the required Python libraries
+# Install any necessary dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the Python script into the container
-COPY code.py .
+# Expose the Flask app on port 9000
+EXPOSE 9000
 
-# Command to run the Python script
-CMD ["python", "code.py"]
+# Run the Flask app when the container starts
+CMD ["python", "app.py"]
         """,
         "java" : 
         """

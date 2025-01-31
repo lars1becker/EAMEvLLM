@@ -1,3 +1,9 @@
+
+def create_api_app(coding_language):
+    # Python script to create an API app
+    api_app_content_dict = {
+        "python":
+"""
 from flask import Flask, request, jsonify
 import subprocess
 import os
@@ -35,3 +41,14 @@ def process_file():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9000, debug=True)
+""",
+        "java":
+"""
+
+"""
+}
+    api_app_content = api_app_content_dict[coding_language]
+    with open("data/temp_zip/app.py", "w") as app_file:
+        app_file.write(api_app_content)
+
+    return "data/temp_zip/app.py"
