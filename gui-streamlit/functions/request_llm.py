@@ -13,8 +13,10 @@ def request_llm(prompt, model, embed, conversation):
 
     # Call the API request function based on the model
     if model == "Qwen/Qwen2.5-Coder-32B-Instruct":
-        response, conversation = huggingface_api_request(model=model, conversation=conversation)
+        response = huggingface_api_request(model=model, conversation=conversation)
     else:
-        response, conversation = ollama_api_request(model=model, conversation=conversation)
+        response = ollama_api_request(model=model, conversation=conversation)
     
+    conversation.append({"role": "assistant", "content": response})
+
     return response, conversation

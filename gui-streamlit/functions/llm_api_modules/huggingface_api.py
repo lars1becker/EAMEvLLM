@@ -17,6 +17,5 @@ def huggingface_api_request(model, conversation):
         messages=conversation, 
         max_tokens=1000
     )
-    conversation.append({"role": "assistant", "content": completion.choices[0].message.content})
 
-    return completion.choices[0].message.content, conversation
+    return completion.choices[0].message.content
