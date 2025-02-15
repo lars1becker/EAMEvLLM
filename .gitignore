@@ -10,3 +10,6 @@ testing_llms/data/void/code/*
 testing_llms/data/void/output/*
 testing_llms/data/page_rank/code/*
 testing_llms/data/page_rank/output/*
+testing_llms/stored_runs/*
+gui-streamlit/temp
+gui-streamlit/old
