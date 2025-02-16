@@ -3,10 +3,12 @@
 
 ### gui-streamlit
 ##### How to set up?
-- create and activate virtual environment
+- create and activate Python virtual environment
 - pip install -r requirements
-- set up .env with own api keys look at example.env
+- to run GUI: cd gui-streamlit -> streamlit run finished_app.py
 - to access ollama models -> install ollama -> install models -> models should appear in the GUI
+- to access models via Hugging Face Inference API -> create Account -> create API token -> enter token into newly created file .env (look at example.env)
+- Recommended models: Qwen2.5-Coder-32B-Instruct (via Hugging Face API), Qwen2.5-Coder-3B and Deepseek-Coder-V2-16B (via Ollama)
 ##### How to integrate other API endpoints?
 - add the api request as a Python file to functions/api_modules using *model* and *conversation* as parameters and returning *response* 
 - add the defined function to functions/request_llm.py to the if-clause using the name of the model 
