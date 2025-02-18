@@ -17,7 +17,9 @@ def install_dependencies(env_path, code_path):
     with open(os.path.dirname(code_path) + "/requirements.txt", "r") as file:
         requirements = file.read().splitlines()
     pip_executable = os.path.join(env_path, "bin", "pip") if os.name != "nt" else os.path.join(env_path, "Scripts", "pip.exe")
-    subprocess.run([pip_executable, "install"] + requirements, check=True)
+    for requirement in requirements:
+        if requirement != "":
+            subprocess.run([pip_executable, "install", requirement], check=True)
 
 
 def execute_in_virtual_env(env_path, code_path, uploaded_file_path, timeout):
@@ -32,7 +34,8 @@ def execute_in_virtual_env(env_path, code_path, uploaded_file_path, timeout):
             [python_executable, code_path, uploaded_file_path],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True
+            text=True,
+            shell=True
         )
 
         # Monitor resource usage
