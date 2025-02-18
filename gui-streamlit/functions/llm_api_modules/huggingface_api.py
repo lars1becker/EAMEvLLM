@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
+import requests
 
 # Load environment variables from .env file
 load_dotenv()

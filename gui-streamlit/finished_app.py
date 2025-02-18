@@ -214,7 +214,7 @@ with tabs[1]:
             st.write(st.session_state.code_execution_response["output"])
             if st.button("Generate new Code Snippet using the Error", use_container_width=True):
                     start_time = time.time()
-                    response, st.session_state.conversation = request_llm(f"Can you rewrite the code. Using the error: {st.session_state.code_execution_response["output"]}", selected_model, False, st.session_state.conversation)
+                    response, st.session_state.conversation = request_llm("Can you rewrite the code. Using the error:" + st.session_state.code_execution_response["output"] , selected_model, False, st.session_state.conversation)
                     st.session_state.llm_response_time = time.time() - start_time
                     st.session_state.generated_code = extract_code(response)
                     # Save the code to a file
