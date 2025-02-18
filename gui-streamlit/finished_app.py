@@ -12,6 +12,8 @@ from functions.fetch_file_using_url import fetch_file_using_url
 from functions.get_ollama_models import get_ollama_models
 from functions.test_zip import test_zip
 
+from functions.llm_api_modules.huggingface_api import huggingface_api_request
+
 # Constants
 GENERATED_CODE_PATH = "temp/zip/Generated_Code.py"
 UPLOAD_PATH = "data/uploads/"
@@ -38,13 +40,15 @@ st.title("DBpedia Databus Mods Code Generator")
 
 # Get the available models and append API models
 models = get_ollama_models()
-models.append("Qwen/Qwen2.5-Coder-32B-Instruct")
+models["Qwen/Qwen2.5-Coder-32B-Instruct"] = huggingface_api_request
 
 # Create a dropdown to let the user select a model
 if models:
     selected_model = st.selectbox("Select a model", models)
+    selected_llm_function = models[selected_model]
 else:
     selected_model = None
+    selected_llm_function = None
     st.error("No models available.")
 
 if st.session_state.llm_response_time:
@@ -130,7 +134,14 @@ with tabs[0]:
             if selected_model:
                 with st.spinner('Generating code...'):
                     start_time = time.time()
-                    response, st.session_state.conversation = request_llm(user_input, selected_model, prompt_setting == "Template", [])
+                    response, st.session_state.conversation = request_llm(
+                        user_input, 
+                        selected_model, 
+                        selected_llm_function, 
+                        prompt_setting == "Template", 
+                        [],
+                        st.session_state.uploaded_file
+                    )
                     st.session_state.llm_response_time = time.time() - start_time
                     st.session_state.generated_code = extract_code(response)
                     # Save the code to a file
@@ -160,7 +171,14 @@ with tabs[1]:
             st.code(st.session_state.generated_code, line_numbers=True, language=f"python", wrap_lines=True)
             if(st.button(label="Automatically Generate New Code Snippet", disabled=False, use_container_width=True)):
                 start_time = time.time()
-                response, st.session_state.conversation = request_llm(f"Can you rewrite the Python code.", selected_model, False, st.session_state.conversation)
+                response, st.session_state.conversation = request_llm(
+                    f"Can you rewrite the Python code.", 
+                    selected_model,
+                    selected_llm_function,
+                    False, 
+                    st.session_state.conversation,
+                    st.session_state.uploaded_file
+                )
                 st.session_state.llm_response_time = time.time() - start_time
                 st.session_state.generated_code = extract_code(response)
                 # Save the code to a file
@@ -188,7 +206,14 @@ with tabs[1]:
         if st.button("Generate New Code Snippet using Prompt", use_container_width=True):
             if user_prompt:
                 start_time = time.time()
-                response, st.session_state.conversation = request_llm(user_prompt, selected_model, False, st.session_state.conversation)
+                response, st.session_state.conversation = request_llm(
+                    user_prompt, 
+                    selected_model,
+                    selected_llm_function,
+                    False, 
+                    st.session_state.conversation,
+                    st.session_state.uploaded_file
+                )
                 st.session_state.llm_response_time = time.time() - start_time
                 st.session_state.generated_code = extract_code(response)
                 # Save the code to a file
@@ -214,7 +239,13 @@ with tabs[1]:
             st.write(st.session_state.code_execution_response["output"])
             if st.button("Generate new Code Snippet using the Error", use_container_width=True):
                     start_time = time.time()
-                    response, st.session_state.conversation = request_llm(f"Can you rewrite the code. Using the error: {st.session_state.code_execution_response["output"]}", selected_model, False, st.session_state.conversation)
+                    response, st.session_state.conversation = request_llm(
+                        f"Can you rewrite the code. Using the error: {st.session_state.code_execution_response["output"]}", selected_model, 
+                        selected_llm_function,
+                        False, 
+                        st.session_state.conversation,
+                        st.session_state.uploaded_file
+                    )
                     st.session_state.llm_response_time = time.time() - start_time
                     st.session_state.generated_code = extract_code(response)
                     # Save the code to a file

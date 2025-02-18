@@ -9,7 +9,7 @@
 - to access ollama models -> install ollama -> install models -> models should appear in the GUI
 ##### How to integrate other API endpoints?
 - add the api request as a Python file to functions/api_modules using *model* and *conversation* as parameters and returning *response* 
-- add the defined function to functions/request_llm.py to the if-clause using the name of the model 
+- add the model and the associated function to the *models* dict at the start of finished_app.py similar to the already implemented Qwen model
 
 ### testing_llms
 - Testing of large language models
