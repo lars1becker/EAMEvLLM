@@ -23,8 +23,8 @@ test_case_names = ["image", "void", "page_rank", "connected_components"]
 prompts = {
 "image":
 """
-You are an expert at programming python code. 
-Write python code that extracts the file format, the image dimensions and the image aspect ratio (as float) of a given image-file. The image-file is stored at the path ./data/image/ocean.jpg. Store the result in a dictionary called result and print it at the end, like this (where the values are placeholders): 
+You are an expert at programming Python code. 
+Write Python code that extracts the file format, the image dimensions and the image aspect ratio (as float) of a given image-file. The image-file is stored at the path ./data/image/ocean.jpg. Store the result in a dictionary called result and print it at the end, like this (where the values are placeholders): 
 ```python
 result = {
     'file_format': 'value',
@@ -37,8 +37,8 @@ Just output the block of code without any additional text. Make sure the code wo
 """,
 "void":
 """
-You are an expert at programming python code. 
-Write python code that extracts metadata from an RDF-File as specified in the VoID vocabulary, but only the predicate count and the class count
+You are an expert at programming Python code. 
+Write Python code that extracts metadata from an RDF-File as specified in the VoID vocabulary, but only the predicate count and the class count
 	1.	The predicate count: A count of all unique predicates in the RDF file.
 	2.	The class count: A count of all unique RDF classes (i.e., objects of rdf:type triples).
 The rdf file is stored at the path ./data/void/books.ttl. Store the result in a dictionary called result and print it at the end, like this (where the values are placeholders): 
@@ -53,8 +53,8 @@ Just output the block of code without any additional text. Make sure the code wo
 """,
 "page_rank":
 """
-You are an expert at programming python code. 
-Write python code that calculates the Page Rank scores for a given graph-file at the path ./data/page_rank/page_rank.gml. Store the result for each node in a dictionary called result and print it at the end, like this (where the values are placeholders): 
+You are an expert at programming Python code. 
+Write Python code that calculates the Page Rank scores for a given graph-file at the path ./data/page_rank/page_rank.gml. Store the result for each node in a dictionary called result and print it at the end, like this (where the values are placeholders): 
 ```python
 result = {
     'A': 'value',
@@ -68,8 +68,8 @@ Just output the block of code without any additional text. Make sure the code wo
 """,
 "connected_components":
 """
-You are an expert at programming python code. 
-Write python code that calculates the connected components for a given graph-file at the path ./data/connected_components/connected_components.gml. It should calculate the strongly connected components as well as the weakly connected components. Store the result in a dictionary called result and print it at the end, like this (where the values are placeholders and A, B and so on are sample nodes): 
+You are an expert at programming Python code. 
+Write Python code that calculates the connected components for a given graph-file at the path ./data/connected_components/connected_components.gml. It should calculate the strongly connected components as well as the weakly connected components. Store the result in a dictionary called result and print it at the end, like this (where the values are placeholders and A, B and so on are sample nodes): 
 ```python
 result = {
     'strongly connected components count': 'value',

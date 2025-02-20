@@ -21,7 +21,6 @@ def install_dependencies(env_path, code_path):
         if requirement != "":
             subprocess.run([pip_executable, "install", requirement], check=True)
 
-
 def execute_in_virtual_env(env_path, code_path, uploaded_file_path, timeout):
     """Executes the given Python code inside the virtual environment with runtime and memory tracking."""
     python_executable = os.path.join(env_path, "bin", "python") if os.name != "nt" else os.path.join(env_path, "Scripts", "python.exe")
@@ -34,22 +33,21 @@ def execute_in_virtual_env(env_path, code_path, uploaded_file_path, timeout):
             [python_executable, code_path, uploaded_file_path],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True,
-            shell=True
+            text=True
         )
 
         # Monitor resource usage
         ps_process = psutil.Process(process.pid)
         max_memory_usage = 0
 
-        while process.poll() is None:
+        while process.poll() is None and time.time() - start_time < timeout/2:
             max_memory_usage = max(max_memory_usage, ps_process.memory_info().rss)  # Memory in bytes
             time.sleep(0.1)
 
+        stdout, stderr = process.communicate(timeout=timeout/2)
+
         end_time = time.time()
         runtime = end_time - start_time
-
-        stdout, stderr = process.communicate()
 
         return stdout, stderr, f"{runtime:.2f}", f"{max_memory_usage / (1024 * 1024):.2f}"  # Convert bytes to MB
     except subprocess.TimeoutExpired:

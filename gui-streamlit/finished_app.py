@@ -106,7 +106,7 @@ with tabs[0]:
     prompt_setting = st.radio(
         "Toggle", 
         options=["Template", "Custom"],
-        index=1,
+        index=0,
         horizontal=True,
         captions=("Use template prompt to just enter metadata extraction requirements.", "Create own prompt (with template for processing)."),
         label_visibility="collapsed",
@@ -119,7 +119,7 @@ with tabs[0]:
     # Disable the "Template" radio option in a conditional way
     if st.session_state.uploaded_file is None:
         st.warning("Please provide a file to enter a prompt.")
-    elif prompt_setting == "Template":
+    if prompt_setting == "Template":
         user_input = st.text_area("Just enter the metadata extraction requirements:", height=100)
         prompt = f'You are an expert at writing Python code. Can you write me Python code that extracts: <span style="color:red">{user_input if user_input != "" else "{ requirements }"}</span> from the file, which path is given as the first argv. Save the result to a variable called result and print it out. Use the most common Python libraries. Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text. Make sure the code works correctly and compiles.'
     else:
@@ -150,7 +150,7 @@ with tabs[0]:
                     if st.session_state.generated_code:
                         st.toast("Code generated successfully!")
                         st.session_state.code_execution_response = { "output": "", "code_runtime": "", "code_space": "" }
-                        switch_tab("🔧 Refine Code")
+                        switch_tab(1)
                     else:
                         st.toast("Failed to generate code.", icon="🚨")
             else:
