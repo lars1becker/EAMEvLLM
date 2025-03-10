@@ -18,6 +18,10 @@ from functions.llm_api_modules.huggingface_api import huggingface_api_request
 GENERATED_CODE_PATH = "temp/zip/Generated_Code.py"
 UPLOAD_PATH = "data/uploads/"
 
+# Make sure the directories exist
+os.makedirs(os.path.dirname(GENERATED_CODE_PATH), exist_ok=True)
+os.makedirs(UPLOAD_PATH, exist_ok=True)
+
 # Set the page config to be full width
 st.set_page_config(layout="wide")
 
@@ -121,10 +125,10 @@ with tabs[0]:
         st.warning("Please provide a file to enter a prompt.")
     if prompt_setting == "Template":
         user_input = st.text_area("Just enter the metadata extraction requirements:", height=100)
-        prompt = f'You are an expert at writing Python code. Can you write me Python code that extracts: <span style="color:red">{user_input if user_input != "" else "{ requirements }"}</span> from the file, which path is given as the first argv. Save the result to a variable called result and print it out. Use the most common Python libraries. Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text. Make sure the code works correctly and compiles.'
+        prompt = f"You are an expert at writing Python code. Can you write me Python code that extracts: {user_input if user_input != "" else "{ user prompt }"} from the {uploaded_file.type} file, which path is given as the first argv. Save the result to a variable called result and print it out. Use the most common Python libraries. Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text. Make sure the code works correctly and compiles."
     else:
         user_input = st.text_area("Enter a custom prompt to generate code snippet:", height=100)
-        prompt = f'Can you write me Python code. <span style="color:red">{user_input if user_input != "" else "{ user prompt }"}</span>. The filepath is given as the first argv. Save the result to a variable called result and print it out. Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text.'
+        prompt = f'Can you write me Python code. {user_input if user_input != "" else "{ user prompt }"} The filepath is given as the first argv.  Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text.'
 
     st.markdown(f'<p style="background-color:#1b2b42;color:white;font-size:16px;border-radius:8px;padding:12px;"> <span style="color:gray"> Prompt: </span> <br>{prompt}</p>', unsafe_allow_html=True)
 
