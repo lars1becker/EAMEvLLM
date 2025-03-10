@@ -2,10 +2,10 @@ venv
 .DS_Store
 .env
 
-gui-streamlit/data/uploads/*
-gui-streamlit/temp/*
-gui-streamlit/temp/zip/*
-gui-streamlit/old
+gui_streamlit/data/uploads/*
+gui_streamlit/temp/*
+gui_streamlit/temp/zip/*
+gui_streamlit/old
 
 testing_llms/data/connected_components/code/*
 testing_llms/data/connected_components/output/*
@@ -16,3 +16,5 @@ testing_llms/data/void/output/*
 testing_llms/data/page_rank/code/*
 testing_llms/data/page_rank/output/*
 testing_llms/stored_runs/*
+
+testing

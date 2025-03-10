@@ -1,7 +1,7 @@
 # Code Generation via Large Language Models to Extract Metadata from Files
 ###### Streamlit GUI and Testing Environment
 
-### gui-streamlit
+### gui_streamlit
 ##### How to set up?
 - create and activate Python virtual environment
 - pip install -r requirements
