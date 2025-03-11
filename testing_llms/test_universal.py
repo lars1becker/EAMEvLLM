@@ -170,7 +170,7 @@ for test_case_name in test_case_names:
             
             # Start the subprocess with a timeout
             process = subprocess.Popen(
-                ["python", f"./data/{test_case_name}/code/{model_name}_{iteration}_{revision}.py"],
+                ["python", f'./data/{test_case_name}/code/{model_name}_{iteration}_{revision}.py'],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True
@@ -186,7 +186,7 @@ for test_case_name in test_case_names:
                 stdout, stderr = process.communicate(timeout=timeout)
             except subprocess.TimeoutExpired:
                 # If the process exceeds the timeout, terminate it
-                print(f"Process exceeded timeout of {timeout} seconds. Terminating...")
+                print(f'Process exceeded timeout of {timeout} seconds. Terminating...')
                 process.terminate()
                 try:
                     process.wait(timeout=2)  # Wait briefly for graceful termination
@@ -196,7 +196,7 @@ for test_case_name in test_case_names:
                     process.kill()
                     process.wait()
                     print("Subprocess killed.")
-                return None, None, f"Process timed out after {timeout} seconds.", None
+                return None, None, f'Process timed out after {timeout} seconds.', None
 
             # Stop the timer after code execution
             end_time = time.time()
@@ -207,7 +207,7 @@ for test_case_name in test_case_names:
             stderr = stderr.strip()
 
             if stderr:
-                print(f"Standard Error:\n{stderr.splitlines()[-1]}")
+                print(f'Standard Error:\n{stderr.splitlines()[-1]}')
 
             # Attempt to extract a dictionary from stdout
             match = re.search(r"\{.*?\}", stdout, re.DOTALL)
@@ -215,16 +215,16 @@ for test_case_name in test_case_names:
                 # Parse the matched dictionary string safely
                 extracted_dict = eval(match.group(0))
                 if isinstance(extracted_dict, dict):
-                    print(f"Extracted Dictionary: {extracted_dict}")
+                    print(f'Extracted Dictionary: {extracted_dict}')
                     return extracted_dict, code_runtime, None, kb_memory_usage  # Return the dictionary if valid
                 else:
-                    print(f"Output is not a valid dictionary: {stdout}")
+                    print(f'Output is not a valid dictionary: {stdout}')
                     if not stderr:
                         return None, code_runtime, 'No dictionary found! ' + stdout, kb_memory_usage
                     else:
                         return None, None, stderr, None
             else:
-                print(f"No dictionary found in output. Stdout: {stdout}")
+                print(f'No dictionary found in output. Stdout: {stdout}')
                 if not stderr:
                     return None, code_runtime, 'No dictionary found! ' + stdout, kb_memory_usage
                 else:
@@ -232,7 +232,7 @@ for test_case_name in test_case_names:
 
         except Exception as e:
             # Handle unexpected execution errors
-            print(f"Exception occurred during execution: {e}")
+            print(f'Exception occurred during execution: {e}')
             return None, None, e, None
         
     def stop_ollama_models():
@@ -250,14 +250,14 @@ for test_case_name in test_case_names:
         results_list = []
 
         # Make sure the directories are setup
-        os.makedirs(f"data", exist_ok=True)
+        os.makedirs(f'data', exist_ok=True)
         for test_case in test_case_names:
             for folder in ["code", "output"]:
-                os.makedirs(f"data/{test_case}/{folder}", exist_ok=True)
+                os.makedirs(f'data/{test_case}/{folder}', exist_ok=True)
 
         # Clear output files for each model
         for model_name in models:
-            with open(f"data/{test_case_name}/output/" + model_name + ".txt", "w") as f:
+            with open(f'data/{test_case_name}/output/' + model_name + ".txt", "w") as f:
                 pass
 
         # Main loop to iterate over models and prompt generation
@@ -269,7 +269,7 @@ for test_case_name in test_case_names:
                 ]
 
                 for j in range(3):
-                    print(f"Model: {model_name}, Iteration: {i + 1}, {'Revision ' + str(j) if j != 0 else ''}")
+                    print(f'Model: {model_name}, Iteration: {i + 1}, {'Revision ' + str(j) if j != 0 else ''}')
 
                     # Generate text and code with the selected model
                     if model_name == "qwen2.5-coder-32B":
@@ -282,12 +282,12 @@ for test_case_name in test_case_names:
                     code = extract_code(response)
 
                     # Save the code to a file
-                    with open(f"data/{test_case_name}/code/{model_name}_{i + 1}_{j}.py", "w") as f:
+                    with open(f'data/{test_case_name}/code/{model_name}_{i + 1}_{j}.py', "w") as f:
                         f.write(code)
 
                     # Run pylint and capture the output
                     results = Run(args=[
-                        f"data/{test_case_name}/code/{model_name}_{i + 1}_{j}.py"
+                        f'data/{test_case_name}/code/{model_name}_{i + 1}_{j}.py'
                         ], exit=False)
                     score = results.linter.stats.global_note  # Get the score from linter stats
 
@@ -297,7 +297,7 @@ for test_case_name in test_case_names:
                     if code_runtime is not None:
                         break
                     else:
-                        conversation.append({"role": "user", "content": f"The code execution failed. Please revise the code using the error: {error}"})
+                        conversation.append({"role": "user", "content": f'The code execution failed. Please revise the code using the error: {error}'})
 
                 # After normalizing, assign values to the requirements
                 if isinstance(exec_result, dict):
@@ -326,22 +326,22 @@ for test_case_name in test_case_names:
                 })
 
                 # Save runtime data to the text file
-                with open(f"data/{test_case_name}/output/" + model_name + ".txt", "a") as f:
-                    f.write(f"Iteration {i + 1}: {'Revision ' + str(j) if j != 0 else ''}\n")
+                with open(f'data/{test_case_name}/output/' + model_name + ".txt", "a") as f:
+                    f.write(f'Iteration {i + 1}: {'Revision ' + str(j) if j != 0 else ''}\n')
                     if code_runtime is not None:
-                        f.write(f"LLM Response Time: {llm_runtime:.4f} sec, Code Execution Time: {code_runtime:.4f} sec, Memory Usage: {memory_usage:.2f} KB, PyLint Score: {score:.2f}\n")
+                        f.write(f'LLM Response Time: {llm_runtime:.4f} sec, Code Execution Time: {code_runtime:.4f} sec, Memory Usage: {memory_usage:.2f} KB, PyLint Score: {score:.2f}\n')
                         for req in requirements:
-                            f.write(f"{req}: {requirements[req]} ")
+                            f.write(f'{req}: {requirements[req]} ')
                         f.write("\n")
                     else:
-                        f.write(f"LLM Response Time: {llm_runtime:.4f} sec, Code Execution failed\n")
-                        f.write(f"Error: {error_message}\n")
+                        f.write(f'LLM Response Time: {llm_runtime:.4f} sec, Code Execution failed\n')
+                        f.write(f'Error: {error_message}\n')
                     f.write("\n")
             stop_ollama_models()
 
         # Create a DataFrame from the results list and save it to a CSV
         results_df = pd.DataFrame(results_list)
-        results_df.to_csv(f"data/{test_case_name}/code_execution_results.csv", index=False)
+        results_df.to_csv(f'data/{test_case_name}/code_execution_results.csv', index=False)
         print("Results saved to data/code_execution_results.csv")
     except KeyboardInterrupt:
         print("\nStopped testing! And cleaned up the running ollama models.")

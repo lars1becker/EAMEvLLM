@@ -37,7 +37,7 @@ def create_zip(code_path, data_files):
     # Ensure all necessary files exist
     for file in files_to_zip:
         if not os.path.exists(file):
-            return f"Failed to generate {file}."
+            return f'Failed to generate {file}.'
 
     # Create a ZIP file
     shutil.make_archive("temp/output", "zip", TEMP_PATH)

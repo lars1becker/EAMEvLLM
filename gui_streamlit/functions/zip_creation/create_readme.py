@@ -13,7 +13,7 @@ Testing via:
 curl "http://localhost:9000/process?path=file://path/to/file"
 
     """
-    with open(f"{temp_path}/README.md", "w") as readme:
+    with open(f'{temp_path}/README.md', "w") as readme:
         readme.write(content)
 
-    return f"{temp_path}/README.md"
+    return f'{temp_path}/README.md'

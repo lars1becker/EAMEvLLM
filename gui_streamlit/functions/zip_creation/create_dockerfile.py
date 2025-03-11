@@ -21,7 +21,7 @@ CMD ["python", "app.py"]
 """
 
     # Write the content to a Dockerfile
-    with open(f"{temp_path}/Dockerfile", "w") as dockerfile:
+    with open(f'{temp_path}/Dockerfile', "w") as dockerfile:
         dockerfile.write(dockerfile_content)
 
-    return f"{temp_path}/Dockerfile"
+    return f'{temp_path}/Dockerfile'

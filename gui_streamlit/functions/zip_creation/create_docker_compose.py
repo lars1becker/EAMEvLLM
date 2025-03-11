@@ -10,7 +10,7 @@ services:
       - "9000:9000"  # Change if your Flask app runs on a different port
     restart: unless-stopped
     """
-    with open(f"{temp_path}/docker-compose.yml", "w") as docker_compose:
+    with open(f'{temp_path}/docker-compose.yml', "w") as docker_compose:
         docker_compose.write(content)
     
-    return f"{temp_path}/docker-compose.yml"
+    return f'{temp_path}/docker-compose.yml'

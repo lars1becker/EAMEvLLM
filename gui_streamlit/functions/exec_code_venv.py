@@ -49,7 +49,7 @@ def execute_in_virtual_env(env_path, code_path, uploaded_file_path, timeout):
         end_time = time.time()
         runtime = end_time - start_time
 
-        return stdout, stderr, f"{runtime:.2f}", f"{max_memory_usage / (1024 * 1024):.2f}"  # Convert bytes to MB
+        return stdout, stderr, f'{runtime:.2f}', f'{max_memory_usage / (1024 * 1024):.2f}'  # Convert bytes to MB
     except subprocess.TimeoutExpired:
         if process:
             process.kill()
@@ -71,7 +71,7 @@ def exec_code_venv(code_path, uploaded_file_path, timeout):
         output, error, runtime, memory_usage = execute_in_virtual_env(env_dir, code_path, uploaded_file_path, timeout)
 
         if error:
-            return f"Standard Error:\n{error}", None, None
+            return f'Standard Error:\n{error}', None, None
         else:
             return output, runtime, memory_usage
     finally:

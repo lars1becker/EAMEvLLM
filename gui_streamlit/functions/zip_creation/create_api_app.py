@@ -41,7 +41,7 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9000, debug=True)
 """
 
-    with open(f"{temp_path}/app.py", "w") as app_file:
+    with open(f'{temp_path}/app.py', "w") as app_file:
         app_file.write(api_app_content)
 
-    return f"{temp_path}/app.py"
+    return f'{temp_path}/app.py'
