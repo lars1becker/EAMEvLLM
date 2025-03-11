@@ -6,9 +6,10 @@ import time
 def test_zip(zip_path, uploaded_file_name):
     try:
         # Build the Docker containers
+        subprocess.run(["docker", "rm", "flask-api"], cwd=zip_path)
         subprocess.run(["docker-compose", "up", "--build", "-d"], check=True, cwd=zip_path)
 
-        time.sleep(0.1)  # Wait for the Flask API to start
+        time.sleep(1)  # Wait for the Flask API to start
 
         # Optional: Verify API response
         response = requests.get(f'http://localhost:9000/process?path=file://{uploaded_file_name}')
