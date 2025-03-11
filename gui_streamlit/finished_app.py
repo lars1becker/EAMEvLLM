@@ -56,7 +56,7 @@ else:
     st.error("No models available.")
 
 if st.session_state.llm_response_time:
-    st.info(f"LLM response time: {st.session_state.llm_response_time:.2f} seconds")
+    st.info(f'LLM response time: {st.session_state.llm_response_time:.2f} seconds')
 
 # Layout with tabs
 tabs = st.tabs(["📄 Upload File \\ ⚙️ Generate Code", "🔧 Refine Code"])
@@ -87,7 +87,7 @@ with tabs[0]:
                     try:
                         uploaded_file, error = fetch_file_using_url(file_url, max_size)
                     except requests.exceptions.RequestException as e:
-                        st.error(f"Failed to fetch the file: {e}")
+                        st.error(f'Failed to fetch the file: {e}')
             else: 
                 st.warning("Please provide a file URL.")
 
@@ -97,7 +97,7 @@ with tabs[0]:
     elif error:
         st.error(error)
     if st.session_state.uploaded_file:
-        st.info(f"File uploaded. Filename: {st.session_state.uploaded_file.name}, Filesize: {len(st.session_state.uploaded_file.getbuffer()) / 1024:.3f} KB")
+        st.info(f'File uploaded. Filename: {st.session_state.uploaded_file.name}, Filesize: {len(st.session_state.uploaded_file.getbuffer()) / 1024:.3f} KB')
         with open(UPLOAD_PATH + st.session_state.uploaded_file.name, "wb") as file:
             file.write(st.session_state.uploaded_file.getbuffer())
         # st.session_state.code_execution_response = { "output": "", "code_runtime": "", "code_space": "" }
@@ -123,44 +123,45 @@ with tabs[0]:
     # Disable the "Template" radio option in a conditional way
     if st.session_state.uploaded_file is None:
         st.warning("Please provide a file to enter a prompt.")
-    if prompt_setting == "Template":
-        user_input = st.text_area("Just enter the metadata extraction requirements:", height=100)
-        prompt = f"You are an expert at writing Python code. Can you write me Python code that extracts: {user_input if user_input != "" else "{ user prompt }"} from the {uploaded_file.type} file, which path is given as the first argv. Save the result to a variable called result and print it out. Use the most common Python libraries. Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text. Make sure the code works correctly and compiles."
-    else:
-        user_input = st.text_area("Enter a custom prompt to generate code snippet:", height=100)
-        prompt = f'Can you write me Python code. {user_input if user_input != "" else "{ user prompt }"} The filepath is given as the first argv.  Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text.'
-
-    st.markdown(f'<p style="background-color:#1b2b42;color:white;font-size:16px;border-radius:8px;padding:12px;"> <span style="color:gray"> Prompt: </span> <br>{prompt}</p>', unsafe_allow_html=True)
-
-    # Generate button
-    if st.button("Generate Code", use_container_width=True):
-        if user_input:
-            if selected_model:
-                with st.spinner('Generating code...'):
-                    start_time = time.time()
-                    response, st.session_state.conversation = request_llm(
-                        user_input, 
-                        selected_model, 
-                        selected_llm_function, 
-                        prompt_setting == "Template", 
-                        [],
-                        st.session_state.uploaded_file
-                    )
-                    st.session_state.llm_response_time = time.time() - start_time
-                    st.session_state.generated_code = extract_code(response)
-                    # Save the code to a file
-                    with open(GENERATED_CODE_PATH, "w") as f:
-                        f.write(st.session_state.generated_code)
-                    if st.session_state.generated_code:
-                        st.toast("Code generated successfully!")
-                        st.session_state.code_execution_response = { "output": "", "code_runtime": "", "code_space": "" }
-                        switch_tab(1)
-                    else:
-                        st.toast("Failed to generate code.", icon="🚨")
-            else:
-                st.warning("Please select a model.")
+    else: 
+        if prompt_setting == "Template":
+            user_input = st.text_area("Just enter the metadata extraction requirements:", height=100)
+            prompt = f'You are an expert at writing Python code. Can you write me Python code that extracts: <span style="color:red">{user_input if user_input != "" else "{ user prompt }"}</span> from the {uploaded_file.type} file, which path is given as the first argv. Save the result to a variable called result and print it out. Use the most common Python libraries. Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text. Make sure the code works correctly and compiles.'
         else:
-            st.warning("Please enter a prompt.")
+            user_input = st.text_area("Enter a custom prompt to generate code snippet:", height=100)
+            prompt = f'Can you write me Python code. <span style="color:red">{user_input if user_input != "" else "{ user prompt }"}</span> The filepath is given as the first argv.  Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text.'
+
+        st.markdown(f'<p style="background-color:#1b2b42;color:white;font-size:16px;border-radius:8px;padding:12px;"> <span style="color:gray"> Prompt: </span> <br>{prompt}</p>', unsafe_allow_html=True)  
+
+        # Generate button
+        if st.button("Generate Code", use_container_width=True):
+            if user_input:
+                if selected_model:
+                    with st.spinner('Generating code...'):
+                        start_time = time.time()
+                        response, st.session_state.conversation = request_llm(
+                            user_input, 
+                            selected_model, 
+                            selected_llm_function, 
+                            prompt_setting == "Template", 
+                            [],
+                            st.session_state.uploaded_file
+                        )
+                        st.session_state.llm_response_time = time.time() - start_time
+                        st.session_state.generated_code = extract_code(response)
+                        # Save the code to a file
+                        with open(GENERATED_CODE_PATH, "w") as f:
+                            f.write(st.session_state.generated_code)
+                        if st.session_state.generated_code:
+                            st.toast("Code generated successfully!")
+                            st.session_state.code_execution_response = { "output": "", "code_runtime": "", "code_space": "" }
+                            switch_tab(1)
+                        else:
+                            st.toast("Failed to generate code.", icon="🚨")
+                else:
+                    st.warning("Please select a model.")
+            else:
+                st.warning("Please enter a prompt.")
 
 # ==============================
 # Refine and Execute Code Tab
@@ -172,11 +173,11 @@ with tabs[1]:
         # ==============================
         col1, col2 = st.columns(spec=[0.5,0.5], gap='small')
         with col1:
-            st.code(st.session_state.generated_code, line_numbers=True, language=f"python", wrap_lines=True)
+            st.code(st.session_state.generated_code, line_numbers=True, language="python", wrap_lines=True)
             if(st.button(label="Automatically Generate New Code Snippet", disabled=False, use_container_width=True)):
                 start_time = time.time()
                 response, st.session_state.conversation = request_llm(
-                    f"Can you rewrite the Python code.", 
+                    "Can you rewrite the Python code.", 
                     selected_model,
                     selected_llm_function,
                     False, 
@@ -196,7 +197,7 @@ with tabs[1]:
                 # Save the edited code to the session state
                 st.session_state.generated_code = code
                 # Add the code changes to the conversation
-                st.session_state.conversation.append({"role": "user", "content": f"I manually changed the code to this: {code}"})
+                st.session_state.conversation.append({"role": "user", "content": f'I manually changed the code to this: {code}'})
                 # Save the code to a file
                 with open(GENERATED_CODE_PATH, "w") as f:
                     f.write(st.session_state.generated_code)
@@ -237,14 +238,14 @@ with tabs[1]:
                 output, code_runtime, code_space = exec_code_venv(GENERATED_CODE_PATH, UPLOAD_PATH + st.session_state.uploaded_file.name, 10)
                 st.session_state.code_execution_response = {"output": output, "code_runtime": code_runtime, "code_space": code_space}
             except Exception as e:
-                st.error(f"An error occurred: {e}")
+                st.error(f'An error occurred: {e}')
         if st.session_state.code_execution_response["output"].startswith("Standard Error"):
             st.error("Code execution failed!")
             st.write(st.session_state.code_execution_response["output"])
             if st.button("Generate new Code Snippet using the Error", use_container_width=True):
                     start_time = time.time()
                     response, st.session_state.conversation = request_llm(
-                        f"Can you rewrite the code. Using the error: {st.session_state.code_execution_response["output"]}", selected_model, 
+                        f'Can you rewrite the code. Using the error: {st.session_state.code_execution_response["output"]}', selected_model, 
                         selected_llm_function,
                         False, 
                         st.session_state.conversation,
