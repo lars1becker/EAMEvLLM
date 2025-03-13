@@ -1,5 +1,5 @@
 # Code Generation via Large Language Models to Extract Metadata from Files
-###### Streamlit GUI and Testing Environment
+###### Streamlit GUI and Testing Environment for Bachelor Thesis
 
 ### gui_streamlit
 ##### How to set up?
