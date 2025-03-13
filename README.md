@@ -1,4 +1,4 @@
-# Code Generation via Large Language Models to Extract Metadata from Files
+# EAMEvLLM - Enhancing Automated Metadata Extraction via Large Language Models
 ###### Streamlit GUI and Testing Environment for Bachelor Thesis
 
 ### gui_streamlit
