@@ -2,10 +2,10 @@ def create_docker_compose(temp_path):
     content = """
 version: '3.8'
 services:
-  flask-api:
+  metadata_extraction_application:
     build: .
-    image: flask-api
-    container_name: flask-api
+    image: metadata_extraction_application
+    container_name: metadata_extraction_application
     ports:
       - "9000:9000"  # Change if your Flask app runs on a different port
     restart: unless-stopped

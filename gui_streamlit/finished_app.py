@@ -126,10 +126,10 @@ with tabs[0]:
     else: 
         if prompt_setting == "Template":
             user_input = st.text_area("Just enter the metadata extraction requirements:", height=100)
-            prompt = f'You are an expert at writing Python code. Can you write me Python code that extracts: <span style="color:red">{user_input if user_input != "" else "{ user prompt }"}</span> from the {uploaded_file.type} file, which path is given as the first argv. Save the result to a variable called result and print it out. Use the most common Python libraries. Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text. Make sure the code works correctly and compiles.'
+            prompt = f'You are an expert at writing Python code. Can you write me Python code that extracts: <span style="color:red">{user_input if user_input != "" else "{ user prompt }"}</span> from the {uploaded_file.type} file, which path is given as the first argv. Print out the results as a JSON. Use the most common Python libraries. Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text. Make sure the code works correctly and compiles.'
         else:
             user_input = st.text_area("Enter a custom prompt to generate code snippet:", height=100)
-            prompt = f'Can you write me Python code. <span style="color:red">{user_input if user_input != "" else "{ user prompt }"}</span> The filepath is given as the first argv.  Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text.'
+            prompt = f'Can you write me Python code. <span style="color:red">{user_input if user_input != "" else "{ user prompt }"}</span> The filepath is given as the first argv. Print out the results as a JSON. Just give the code block like this: ```python ... ``` and the libraries used like this: ```requirements ... ``` as output without any additional text.'
 
         st.markdown(f'<p style="background-color:#1b2b42;color:white;font-size:16px;border-radius:8px;padding:12px;"> <span style="color:gray"> Prompt: </span> <br>{prompt}</p>', unsafe_allow_html=True)  
 
@@ -140,12 +140,10 @@ with tabs[0]:
                     with st.spinner('Generating code...'):
                         start_time = time.time()
                         response, st.session_state.conversation = request_llm(
-                            user_input, 
+                            prompt, 
                             selected_model, 
-                            selected_llm_function, 
-                            prompt_setting == "Template", 
-                            [],
-                            st.session_state.uploaded_file
+                            selected_llm_function,
+                            []
                         )
                         st.session_state.llm_response_time = time.time() - start_time
                         st.session_state.generated_code = extract_code(response)
@@ -180,9 +178,7 @@ with tabs[1]:
                     "Can you rewrite the Python code.", 
                     selected_model,
                     selected_llm_function,
-                    False, 
-                    st.session_state.conversation,
-                    st.session_state.uploaded_file
+                    st.session_state.conversation
                 )
                 st.session_state.llm_response_time = time.time() - start_time
                 st.session_state.generated_code = extract_code(response)
@@ -215,9 +211,7 @@ with tabs[1]:
                     user_prompt, 
                     selected_model,
                     selected_llm_function,
-                    False, 
-                    st.session_state.conversation,
-                    st.session_state.uploaded_file
+                    st.session_state.conversation
                 )
                 st.session_state.llm_response_time = time.time() - start_time
                 st.session_state.generated_code = extract_code(response)
@@ -247,9 +241,7 @@ with tabs[1]:
                     response, st.session_state.conversation = request_llm(
                         f'Can you rewrite the code. Using the error: {st.session_state.code_execution_response["output"]}', selected_model, 
                         selected_llm_function,
-                        False, 
-                        st.session_state.conversation,
-                        st.session_state.uploaded_file
+                        st.session_state.conversation
                     )
                     st.session_state.llm_response_time = time.time() - start_time
                     st.session_state.generated_code = extract_code(response)
@@ -262,7 +254,7 @@ with tabs[1]:
             st.success("Code executed successfully!")
             # Capture and display the output or result variables from local_scope
             st.write("Output: " + st.session_state.code_execution_response["output"])
-            st.info("Code runtime: " + st.session_state.code_execution_response["code_runtime"] + " seconds, Memory usage: " + st.session_state.code_execution_response["code_space"] + " KB")
+            st.info("File: " + st.session_state.uploaded_file.name + ", Code runtime: " + st.session_state.code_execution_response["code_runtime"] + " seconds, Memory usage: " + st.session_state.code_execution_response["code_space"] + " KB")
     
         # ==============================
         # Create ZIP file and download Component

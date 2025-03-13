@@ -6,6 +6,7 @@ from functions.zip_creation.create_docker_compose import create_docker_compose
 from functions.zip_creation.create_dockerfile import create_dockerfile
 from functions.zip_creation.create_readme import create_readme
 from functions.generate_requirements import generate_requirements
+from functions.zip_creation.create_batch_script import create_batch_script
 
 def create_zip(code_path, data_files):
     TEMP_PATH = "temp/zip"
@@ -23,6 +24,7 @@ def create_zip(code_path, data_files):
     docker_compose_path = create_docker_compose(TEMP_PATH)
     dockerfile_path = create_dockerfile(TEMP_PATH)
     readme_path = create_readme(TEMP_PATH)
+    batch_script_path = create_batch_script(TEMP_PATH)
 
     # Generate requirements.txt
     generate_requirements(code_path)
@@ -32,7 +34,7 @@ def create_zip(code_path, data_files):
         shutil.copy(data_file, TEMP_PATH)
 
     # Files to be zipped
-    files_to_zip = [code_path, api_app_path, docker_compose_path, dockerfile_path, readme_path]
+    files_to_zip = [code_path, api_app_path, docker_compose_path, dockerfile_path, readme_path, batch_script_path]
 
     # Ensure all necessary files exist
     for file in files_to_zip:

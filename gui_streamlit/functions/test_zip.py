@@ -12,7 +12,7 @@ def test_zip(zip_path, uploaded_file_name):
         time.sleep(1)  # Wait for the Flask API to start
 
         # Optional: Verify API response
-        response = requests.get(f'http://localhost:9000/process?path=file://{uploaded_file_name}')
+        response = requests.post(url="http://localhost:9000/process", files={"file": open(os.path.join(zip_path, uploaded_file_name), "rb")})
 
         if response.status_code == 200:
             print("Flask API is running correctly!")
@@ -26,4 +26,4 @@ def test_zip(zip_path, uploaded_file_name):
         return False
     finally:
         # Clean up after testing
-        subprocess.run(["docker-compose", "down"], cwd=zip_path)
+        subprocess.run(["docker-compose", "down", "--rmi", "local"], cwd=zip_path)

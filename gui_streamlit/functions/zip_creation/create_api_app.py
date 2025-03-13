@@ -5,35 +5,39 @@ def create_api_app(temp_path):
 from flask import Flask, request, jsonify
 import subprocess
 import os
+import json
 
 app = Flask(__name__)
 
-@app.route('/process', methods=['GET'])
+@app.route('/process', methods=['POST'])
 def process_file():
-    # Get the file path from the request
-    file_url = request.args.get('path')
-
-    if not file_url:
-        return jsonify({'error': 'No file path provided'}), 400
-
-    # Ensure the URL scheme is 'file://'
-    if not file_url.startswith('file://'):
-        return jsonify({'error': 'Invalid file path format'}), 400
-
-    # Extract the actual file path
-    file_path = file_url[7:]
-
-    # Check if the file exists
-    if not os.path.isfile(file_path):
-        return jsonify({'error': 'File does not exist'}), 404
-
+    # Check if a file is provided in the request
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file provided'}), 400
+    
+    uploaded_file = request.files['file']
+    
+    if uploaded_file.filename == '':
+        return jsonify({'error': 'Empty file name'}), 400
+    
+    # Save file temporarily
+    temp_path = os.path.join('/tmp', uploaded_file.filename)
+    uploaded_file.save(temp_path)
+    
     try:
-        # Run the generated_code.py script with the file as an argument
-        result = subprocess.run(['python3', 'Generated_Code.py', file_path], capture_output=True, text=True)
-
-        # Return the output of the script
-        return jsonify({'output': result.stdout, 'error': result.stderr})
-
+        # Run the Generated_Code.py script with the file as an argument
+        result = subprocess.run(['python3', 'Generated_Code.py', temp_path], capture_output=True, text=True)
+        
+        # Remove the temporary file after processing
+        os.remove(temp_path)
+        
+        # Try to parse the output as JSON
+        try:
+            output_json = json.loads(result.stdout)  # Parse the captured output
+            return jsonify({'file_name': uploaded_file.filename, 'output': output_json})
+        except json.JSONDecodeError:
+            return jsonify({'file_name': uploaded_file.filename, 'error': result.stderr}), 500
+         
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
